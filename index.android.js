@@ -17,6 +17,18 @@ import {
 } from 'react-native';
 import MyScene from './app/page/MyScene';
 import MyName from './app/page/MyName';
+import ImagePicker from 'react-native-image-picker';
+
+var options = {
+  title: '选择作品',
+  takePhotoButtonTitle: '拍照',
+  chooseFromLibraryButtonTitle: '从相册中选取',
+  cancelButtonTitle: '取消',
+  storageOptions: {
+      skipBackup: true,
+      path: 'images'
+  }
+};
 
 class Person extends Component {
   render() {
@@ -38,14 +50,40 @@ class Person extends Component {
 }
 
 class PersonInfo extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+        avatarSource: require('./image/favicon.jpeg'),
+    }
+  }
+
+  _changeIcon() {
+    //跳转到相机或者图库
+    ImagePicker.showImagePicker(options, (response) => {
+        //类似onActivityResult
+        if (response.didCancel) {
+        }
+        else if (response.error) {
+        }
+        else {
+            //获得照相或图库返回的数据
+            const source = {uri: response.uri, isStatic: true};
+            this.setState({
+                avatarSource: source,
+            });
+        }
+    });
+ }
+
+
 
   render(){
     return(
       <ScrollView style={{backgroundColor:'#EEEEEE'}}>
-      <TouchableOpacity onPress={this.props.onForward}>
+      <TouchableOpacity onPress={this._changeIcon}>
         <View style={[styles.menuContainer,styles.menuIcon]}>
           <Text style={{}}>头像</Text>
-          <Image source={require('./image/favicon.jpeg')}
+          <Image source={this.state.avatarSource}
           style={[styles.menuImage]}/>
           <Image style={[styles.menuRight,{top:40}]}
           source={require('./image/right.png')}/>
