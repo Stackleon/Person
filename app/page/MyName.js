@@ -1,5 +1,5 @@
 import React,{Component,PropTypes} from 'react';
-import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
+import {View,Text,TouchableOpacity,StyleSheet,Picker} from 'react-native';
 
 export default class MyName extends Component{
 
@@ -17,10 +17,12 @@ export default class MyName extends Component{
   render(){
     return(
         <View style={sceneStyle.container}>
-        <Text style={sceneStyle.Text}>My name is {this.props.name}</Text>
-        <TouchableOpacity onPress={this.goBack}>
-          <Text style={sceneStyle.Text}>tap to go back</Text>
-        </TouchableOpacity>
+        <Picker
+          selectedValue={this.state.language}
+          onValueChange={(lang) => this.setState({language: lang})}>
+          <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker>
         </View>
     );
   }

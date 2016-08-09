@@ -46,8 +46,8 @@ class PersonInfo extends Component{
         <View style={[styles.menuContainer,styles.menuIcon]}>
           <Text style={{}}>头像</Text>
           <Image source={require('./image/favicon.jpeg')}
-          style={[styles.menuRight,styles.menuImage]}/>
-          <Image style={[styles.menuRight]}
+          style={[styles.menuImage]}/>
+          <Image style={[styles.menuRight,{top:40}]}
           source={require('./image/right.png')}/>
         </View>
       </TouchableOpacity>
@@ -130,16 +130,21 @@ const styles = StyleSheet.create({
   },
 
   menuRight:{
-    marginRight:10,
+    position:'absolute',
+    right:10,
   },
 
  menuRight2:{
-   marginRight:10,
+   position:'absolute',
+   right:30,
+
  },
 
  menuImage:{
    width:80,
    height:80,
+   marginRight:30,
+   borderRadius:360,
    resizeMode:Image.resizeMode.contain,
  },
 
