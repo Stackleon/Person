@@ -1,20 +1,24 @@
-import React,{Component} from 'react';
+import React,{Component,PropTypes} from 'react';
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 
-export default class MyScene extends Component{
+export default class MyName extends Component{
 
- onPress(){
-      if(this.props._navigator.getCurrentRoutes.length>1){
-          this.props._navigator.pop();
-      }
+  static propTypes = {
+    name: PropTypes.string.isRequired,
   }
 
+  goBack(){
+    const {navigator} = this.props;
+    if (navigator) {
+    navigator.pop();
+  }
+  }
 
   render(){
     return(
         <View style={sceneStyle.container}>
-        <Text style={sceneStyle.Text}>this page is{this.props.name}</Text>
-        <TouchableOpacity onPress={this.onPress}>
+        <Text style={sceneStyle.Text}>My name is {this.props.name}</Text>
+        <TouchableOpacity onPress={this.goBack}>
           <Text style={sceneStyle.Text}>tap to go back</Text>
         </TouchableOpacity>
         </View>
@@ -32,8 +36,8 @@ const sceneStyle = StyleSheet.create({
   },
 
   text:{
-    fontSize:24,
     textAlign:'center',
+    fontSize:24
   }
 
 });

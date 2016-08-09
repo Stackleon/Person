@@ -16,6 +16,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import MyScene from './app/page/MyScene';
+import MyName from './app/page/MyName';
 
 class Person extends Component {
   render() {
@@ -24,48 +25,73 @@ class Person extends Component {
     initialRoute = {
         {
             name: 'person',
-            component: PersonInfo
+            component: PersonInfo,
+            _navigator:null,
         }
     }
     renderScene = {(route, navigator) => {
             let Component = route.component;
-            return <Component _navigator = {navigator}/>}}
+            return <Component _navigator = {navigator} />}}
     />
     );
   }
 }
 
 class PersonInfo extends Component{
-  _addNavigator(component,title){
-    this.props._navigator.push({
-      title:title,
-      goBack:this._goBack(),
-      component:component,
-    });
-  }
 
   render(){
     return(
-      <ScrollView style={{backgroundColor:'#eef0f3'}}>
-        <MenuItem
+      <ScrollView style={{backgroundColor:'#EEEEEE'}}>
+      <TouchableOpacity onPress={this.props.onForward}>
+        <View style={[styles.menuContainer,styles.menuIcon]}>
+          <Text style={{}}>头像</Text>
+          <Image source={require('./image/favicon.jpeg')}
+          style={[styles.menuRight,styles.menuImage]}/>
+          <Image style={[styles.menuRight]}
+          source={require('./image/right.png')}/>
+        </View>
+      </TouchableOpacity>
+      <MenuItem
           title="小画家姓名"
           params="悄悄牛牛"
-          _navigator={this.props._navigator}
+          onForward={()=>{
+            this.props._navigator.push({
+              name:"小画家姓名",
+              component:MyName,
+              _navigator:this.props._navigator
+            });
+          }}
         />
       <MenuItem
         title="小画家出生日期"
         params="2008-12-10"
-        _navigator={this.props._navigator}/>
+        onForward={()=>{
+          this.props._navigator.push({
+            name:'小画家的姓名',
+            component:MyScene,
+            _navigator:this.props.navigator
+          });
+        }}/>
 
       <MenuItem
         title="地址"
         params="上海浦东新区"
-        _navigator={this.props._navigator}/>
+        onForward={()=>{
+          this.props._navigator.push({
+            name:'小画家的姓名',
+            component:MyScene
+          });
+        }}/>
 
       <MenuItem
         title="培训机构"
         params="浦东新区少年"
-        _navigator={this.props._navigator}/>
+        onForward={()=>{
+          this.props._navigator.push({
+            name:'小画家的姓名',
+            component:MyScene
+          });
+        }}/>
     </ScrollView>
   )
   }
@@ -73,21 +99,14 @@ class PersonInfo extends Component{
 
 
 class MenuItem extends Component{
-  _onMenuIntemClick(){
-    const{_navigator} = this.props._navigator;
-    _navigator.push({
-      title:this.props.title,
-      component:MyScene,
-    });
-  }
     render(){
       return(
-        <TouchableOpacity onPress={this._onMenuIntemClick}>
+        <TouchableOpacity onPress={this.props.onForward}>
           <View style={styles.menuContainer}>
             <Text style={{}}>{this.props.title}</Text>
             <Text style={[styles.menuRight,styles.menuRight2]}>{this.props.params}</Text>
-            <Image style={[styles.menuRight,styles.menuImage]}
-            source={require('./image/favicon.jpeg')}/>
+            <Image style={[styles.menuRight]}
+            source={require('./image/right.png')}/>
           </View>
         </TouchableOpacity>
       );
@@ -101,9 +120,13 @@ const styles = StyleSheet.create({
       justifyContent:'space-between',
       alignItems:'center',
       marginTop:2,
-      backgroundColor:'#003300',
-      paddingTop:10,
-      paddingBottom:10,
+      backgroundColor:'#FFFFFF',
+      padding:10,
+  },
+
+
+  menuIcon:{
+    marginTop:20,
   },
 
   menuRight:{
@@ -115,8 +138,8 @@ const styles = StyleSheet.create({
  },
 
  menuImage:{
-   width:40,
-   height:40,
+   width:80,
+   height:80,
    resizeMode:Image.resizeMode.contain,
  },
 
