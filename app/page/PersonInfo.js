@@ -29,23 +29,24 @@ export default class PersonInfo extends Component{
   constructor(props) {
     super(props);
     this.state = {
-        avatarSource: require('./image/favicon.jpeg'),
+        avatarSource: require('../.././image/favicon.jpeg'),
     }
   }
 
-    //跳转到相机或者图库
-  ImagePicker.showImagePicker(options, (response) => {
-        //类似onActivityResult
-        if (response.didCancel) {
-        }
-        else if (response.error) {
-        }
-        else {
-            //获得照相或图库返回的数据
-            const source = {uri: response.uri, isStatic: true};
-            this.setState({avatarSource:source});
-        }
-    });
+ _changeIcon(){
+   //跳转到相机或者图库
+   ImagePicker.showImagePicker(options, (response) => {
+     //类似onActivityResult
+     if (response.didCancel) {
+     }
+     else if (response.error) {
+     }
+     else {
+       //获得照相或图库返回的数据
+       const source = {uri: response.uri, isStatic: true};
+       this.setState({avatarSource:source});
+     }
+   });
  }
 
 
@@ -59,7 +60,7 @@ export default class PersonInfo extends Component{
           <Image source={this.state.avatarSource}
           style={[styles.menuImage]}/>
           <Image style={[styles.menuRight,{top:40}]}
-          source={require('./image/right.png')}/>
+          source={require('../.././image/right.png')}/>
         </View>
       </TouchableOpacity>
       <MenuItem
@@ -116,7 +117,7 @@ class MenuItem extends Component{
             <Text style={{}}>{this.props.title}</Text>
             <Text style={[styles.menuRight,styles.menuRight2]}>{this.props.params}</Text>
             <Image style={[styles.menuRight]}
-            source={require('./image/right.png')}/>
+            source={require('../.././image/right.png')}/>
           </View>
         </TouchableOpacity>
       );

@@ -24,7 +24,7 @@ export default class ChangeName extends Component{
                                                   showClear:true})}
           value={this.state.textValue}/>
         <TouchableOpacity onPress={this._clearText}>
-          <Image source={require('./image/clean.png')}/>
+          <Image source={require('../.././image/clean.png')}/>
         </TouchableOpacity>
         </View>
     );

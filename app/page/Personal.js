@@ -9,7 +9,10 @@ export default class Personal extends Component{
     return(
       <ScrollView style={{backgroundColor:'#EEEEEE'}}>
       <TouchableOpacity onPress={()=>{
-
+          this.props._navigator.push({
+            component:PersonInfo,
+            _navigator:this.props._navigator
+          })
       }}>
       <View style={[styles.menuContainer,{marginTop:20}]}>
         <Image source={require('../.././image/favicon.jpeg')} style={styles.menuIcon}/>
