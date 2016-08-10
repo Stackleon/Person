@@ -3,21 +3,30 @@ import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 
 export default class MyScene extends Component{
 
- onPress(){
-      if(this.props._navigator.getCurrentRoutes.length>1){
-          this.props._navigator.pop();
-      }
-  }
-
-
   render(){
     return(
-        <View style={sceneStyle.container}>
-        <Text style={sceneStyle.Text}>this page is{this.props.name}</Text>
-        <TouchableOpacity onPress={this.onPress}>
-          <Text style={sceneStyle.Text}>tap to go back</Text>
-        </TouchableOpacity>
+      <View style={{backgroundColor:'#EEEEEE',flex:1}}>
+        <View style={{
+          flexDirection:'row',
+          justifyContent:'flex-start',
+          flex:1,
+          marginLeft:5,
+          marginRight:5
+        }}>
+        <View style={{flexDirection:'column',
+                      justifyContent:'flex-start',
+                      alignItems:'center',
+                      marginTop:10,
+                    }}>
+                      <View style={{width:3,height:3,borderRadius:360,backgroundColor:'#000000'}}/>
+                      <View style={{flex:1,width:1,backgroundColor:'#000000'}}/>
         </View>
+
+
+
+
+        </View>
+      </View>
     );
   }
 }

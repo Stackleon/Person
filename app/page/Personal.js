@@ -1,8 +1,9 @@
 import React,{Component,PropTypes} from 'react';
 import {View,Text,TouchableOpacity,StyleSheet,Image,ScrollView} from 'react-native';
 
-import PersonInfo from './PersonInfo'
-
+import PersonInfo from './PersonInfo';
+import PersonZone from './PersonZone';
+import MyScene from './MyScene';
 export default class Personal extends Component{
 
   render(){
@@ -34,7 +35,7 @@ export default class Personal extends Component{
           icon={require('../.././image/personal.png')}
           onForward={()=>{
             this.props._navigator.push({
-              name:this.props.params
+              component:PersonZone
             });
           }}
         />
@@ -43,7 +44,7 @@ export default class Personal extends Component{
         icon={require('../.././image/intergate.png')}
         onForward={()=>{
           this.props._navigator.push({
-
+            component:MyScene
           });
         }}/>
 
