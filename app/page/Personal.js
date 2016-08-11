@@ -6,6 +6,8 @@ import PersonZone from './PersonZone';
 import PersonIntegration from './PersonIntegration';
 import PersonRule from './PersonRule';
 import MyScene from './MyScene';
+
+import ChangeName from './ChangeName';
 export default class Personal extends Component{
 
   render(){
@@ -29,7 +31,8 @@ export default class Personal extends Component{
                 <Text>浦东新区少年宫</Text>
           </View>
           </View>
-          <Image source={require('../.././image/right.png')} style={[styles.goToIcon,{top:40}]}/>
+          <Image source={require('../.././image/right.png')}
+                  style={styles.goToIcon}/>
         </View>
       </TouchableOpacity>
 
@@ -57,7 +60,7 @@ export default class Personal extends Component{
         icon={require('../.././image/rule.png')}
         onForward={()=>{
           this.props._navigator.push({
-            component:PersonRule
+            component:ChangeName
           });
         }}/>
       </View>
@@ -75,7 +78,8 @@ class CustomItem extends Component{
               <Image source={this.props.icon}/>
               <Text style={styles.menuText}>{this.props.menuName}</Text>
             </View>
-            <Image source={require('../.././image/right.png')} style={{width:10,height:15,marginRight:10}}/>
+            <Image source={require('../.././image/right.png')}
+                  style={styles.goToIcon}/>
           </View>
         </TouchableOpacity>
         )
@@ -101,10 +105,9 @@ const styles = StyleSheet.create({
   },
 
   goToIcon:{
-    position:'absolute',
-    right:10,
     width:10,
     height:15,
+    marginRight:5,
   },
 
   menuText:{

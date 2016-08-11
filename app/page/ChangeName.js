@@ -17,16 +17,19 @@ export default class ChangeName extends Component{
 
   render(){
     return(
+      <View style={sceneStyle.mainContainer}>
         <View style={sceneStyle.container}>
         <TextInput
           style={sceneStyle.inputText}
           onChangeText={(value) => this.setState({textValue:value,
-                                                  showClear:true})}
-          value={this.state.textValue}/>
-        <TouchableOpacity onPress={this._clearText}>
-          <Image source={require('../.././image/clean.png')}/>
-        </TouchableOpacity>
+                                                 showClear:true})}
+          value={this.state.textValue}
+          />
+          <Image source={require('../.././image/clean.png')}
+                  style={sceneStyle.clearIcon}
+                                />
         </View>
+      </View>
     );
   }
 }
@@ -34,26 +37,33 @@ export default class ChangeName extends Component{
 
 
 const sceneStyle = StyleSheet.create({
-  container:{
-    flex:1,
-    flexDirection:'column',
-    justifyContent:'flex-start',
-    alignItems:'stretch',
-    backgroundColor:'#EEEEEE'
-  },
+ mainContainer:{
+   flexDirection:'column',
+   justifyContent:'flex-start',
+   alignItems:'stretch',
+   flex:1,
+   backgroundColor:'#EEEEEE',
+ },
 
-  inputText:{
-    height:20,
-    fontSize:24,
+
+  container:{
+    flexDirection:'row',
+    justifyContent:'flex-start',
     marginTop:20,
   },
 
-  showClear:{
-    position:'absolute',
-    right:10,
-    top:5,
-    height:5,
-    width:5
+  inputText:{
+    height:45,
+    fontSize:20,
+    flex:1,
+    backgroundColor:'#FFFFFF',
   },
 
+  clearIcon:{
+    position:'absolute',
+    right:10,
+    top:12,
+    height:20,
+    width:20
+  }
 });
