@@ -12,8 +12,6 @@ export default class PersonRule extends Component{
   }
 }
 
-
-
 const sceneStyle = StyleSheet.create({
   container:{
     flex:1,

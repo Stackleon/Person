@@ -57,10 +57,14 @@ export default class PersonInfo extends Component{
       <TouchableOpacity onPress={this._changeIcon.bind()}>
         <View style={[styles.menuContainer,styles.menuIcon]}>
           <Text style={{}}>头像</Text>
-          <Image source={this.state.avatarSource}
-          style={[styles.menuImage]}/>
-          <Image style={[styles.menuRight,{top:40}]}
-          source={require('../.././image/right.png')}/>
+          <View style={{flexDirection:'row',
+                        justifyContent:'flex-start',
+                        alignItems:'center'}}>
+            <Image source={this.state.avatarSource}
+            style={styles.menuImage}/>
+            <Image
+            source={require('../.././image/right.png')}/>
+          </View>
         </View>
       </TouchableOpacity>
       <MenuItem
@@ -114,10 +118,14 @@ class MenuItem extends Component{
       return(
         <TouchableOpacity onPress={this.props.onForward}>
           <View style={styles.menuContainer}>
-            <Text style={{}}>{this.props.title}</Text>
-            <Text style={[styles.menuRight,styles.menuRight2]}>{this.props.params}</Text>
-            <Image style={[styles.menuRight]}
-            source={require('../.././image/right.png')}/>
+            <Text >{this.props.title}</Text>
+            <View style={{flexDirection:'row',
+                          justifyContent:'flex-start',
+                          alignItems:'center'}}>
+              <Text style={{marginRight:10}}>{this.props.params}</Text>
+              <Image style={[styles.menuRight]}
+              source={require('../.././image/right.png')}/>
+            </View>
           </View>
         </TouchableOpacity>
       );
@@ -141,8 +149,8 @@ const styles = StyleSheet.create({
   },
 
   menuRight:{
-    position:'absolute',
-    right:10,
+    width:10,
+    height:15,
   },
 
  menuRight2:{
@@ -154,7 +162,7 @@ const styles = StyleSheet.create({
  menuImage:{
    width:80,
    height:80,
-   marginRight:30,
+   marginRight:10,
    borderRadius:360,
    resizeMode:Image.resizeMode.contain,
  },

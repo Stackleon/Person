@@ -18,17 +18,19 @@ export default class Personal extends Component{
           })
       }}>
       <View style={[styles.menuContainer,{marginTop:20}]}>
-        <Image source={require('../.././image/favicon.jpeg')} style={styles.menuIcon}/>
-        <View style={{flexDirection:'column',
+        <View style={styles.menuContainer2}>
+          <Image source={require('../.././image/favicon.jpeg')} style={styles.menuIcon}/>
+          <View style={{flexDirection:'column',
                       justifyContent:'flex-start',
                       alignItems:'center',
                       marginLeft:5}}>
                 <Text>乔乔妞妞</Text>
                 <Text>上海 7岁</Text>
                 <Text>浦东新区少年宫</Text>
+          </View>
+          </View>
+          <Image source={require('../.././image/right.png')} style={[styles.goToIcon,{top:40}]}/>
         </View>
-        <Image source={require('../.././image/right.png')} style={[styles.goToIcon,{top:40}]}/>
-      </View>
       </TouchableOpacity>
 
       <View style={{marginTop:20}}>
@@ -69,9 +71,11 @@ class CustomItem extends Component{
         return(
          <TouchableOpacity onPress={this.props.onForward}>
           <View style={styles.menuContainer}>
-            <Image source={this.props.icon}/>
-            <Text style={styles.menuText}>{this.props.menuName}</Text>
-            <Image source={require('../.././image/right.png')} style={styles.goToIcon}/>
+            <View style={styles.menuContainer2}>
+              <Image source={this.props.icon}/>
+              <Text style={styles.menuText}>{this.props.menuName}</Text>
+            </View>
+            <Image source={require('../.././image/right.png')} style={{width:10,height:15,marginRight:10}}/>
           </View>
         </TouchableOpacity>
         )
@@ -84,11 +88,16 @@ const styles = StyleSheet.create({
   menuContainer:{
     flex:1,
     flexDirection:'row',
-    justifyContent:'flex-start',
+    justifyContent:'space-between',
     alignItems:'center',
     padding:10,
     backgroundColor:'#FFFFFF',
     marginTop:1,
+  },
+
+  menuContainer2:{
+    flexDirection:'row',
+    alignItems:'center',
   },
 
   goToIcon:{
