@@ -44,7 +44,7 @@ export default class PersonInfo extends Component{
      else {
        //获得照相或图库返回的数据
        const source = {uri: response.uri, isStatic: true};
-       this.setState({avatarSource:source});
+       this.setState({avatarSource:source}).bind(this);
      }
    });
  }

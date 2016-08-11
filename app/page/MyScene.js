@@ -95,6 +95,7 @@ export default class MyScene extends Component{
 }
 
 
+
 const sceneStyle = StyleSheet.create({
   container:{
     flex:1,

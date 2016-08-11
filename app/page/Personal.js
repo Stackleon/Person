@@ -3,6 +3,8 @@ import {View,Text,TouchableOpacity,StyleSheet,Image,ScrollView} from 'react-nati
 
 import PersonInfo from './PersonInfo';
 import PersonZone from './PersonZone';
+import PersonIntegration from './PersonIntegration';
+import PersonRule from './PersonRule';
 import MyScene from './MyScene';
 export default class Personal extends Component{
 
@@ -44,7 +46,7 @@ export default class Personal extends Component{
         icon={require('../.././image/intergate.png')}
         onForward={()=>{
           this.props._navigator.push({
-            component:MyScene
+            component:PersonIntegration
           });
         }}/>
 
@@ -53,7 +55,7 @@ export default class Personal extends Component{
         icon={require('../.././image/rule.png')}
         onForward={()=>{
           this.props._navigator.push({
-
+            component:PersonRule
           });
         }}/>
       </View>
