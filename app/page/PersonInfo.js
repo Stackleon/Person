@@ -49,10 +49,36 @@ export default class PersonInfo extends Component{
    });
  }
 
+_goBack(){
+  if(this._navigator&&this._navigator.getCurrentRoutes.length>1){
+    this._navigator.pop();
+  }
+
+
+}
 
 
   render(){
     return(
+  <View style={{flexDirection:'column',
+                justifyContent:'flex-start',}}>
+      <View style={{flexDirection:'row',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    backgroundColor:'#FFC935',
+                    height:40,
+                    padding:10,
+                  }}>
+      <TouchableOpacity onPress={this._goBack}>
+      <Image source={require('../.././image/back.png')}
+              style={{width:10,height:20,
+                    position:'absolute',
+                    top:5,
+                    left:10}}/>
+      </TouchableOpacity>
+      <Text style={{textAlign:'center',
+                    fontSize:20,}}>个人专区</Text>
+      </View>
       <ScrollView style={{backgroundColor:'#EEEEEE'}}>
       <TouchableOpacity onPress={this._changeIcon.bind()}>
         <View style={[styles.menuContainer,styles.menuIcon]}>
@@ -108,6 +134,7 @@ export default class PersonInfo extends Component{
           });
         }}/>
     </ScrollView>
+  </View>
   )
   }
 }
